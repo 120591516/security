@@ -1,0 +1,89 @@
+{
+    "glxssSecurityApp": {
+        "workRecord" : {
+            "label":{
+                "report": "已处理",
+                "danger1": "假套牌",
+                "danger2": "违章",
+                "danger3": "其他违法",
+                "attention": "警示",
+                "nothing": "无"
+            },
+            "main": "工作记录",
+            "home": {
+                "title": "工作记录",
+                "createLabel": "创建一个工作记录",
+                "createOrEditLabel": "更新工作记录"
+            },
+            "created": "创建工作记录成功",
+            "updated": "更新工作记录成功",
+            "deleted": "工作记录删除成功",
+            "delete": {
+                "question": "请确认删除该条工作记录？"
+            },
+            "detail": {
+                "title": "工作记录"
+            },
+            "type": "类型",
+            "targetId": "Target Id",
+            "targetPicId": "比对照片",
+            "sourcePicId": "采集照片",
+            "similarity": "相似度",
+            "attention": "是否警示",
+            "attentionType": "警示类型",
+            "report": "是否处理",
+            "th-attention": "警示信息",
+            "reportDelay": "Report Delay",
+            "latitude": "Latitude",
+            "longitude": "Longitude",
+            "danger1": "假套牌",
+            "danger2": "违章",
+            "danger3": "其他违法",
+            "danger4": "Danger 4",
+            "danger5": "Danger 5",
+            "lastRecognizedDate": "最近识别时间",
+            "createdDate": "识别时间",
+            "lastModifiedDate": "Last Modified Date",
+            "createdBy": "创建者",
+            "lastModifiedBy": "Last Modified By",
+            "realTime":"实时",
+            "paging":"分页"
+        },
+        "workRecordCarPlate": {
+            "home": {
+                "title": "车牌识别"
+            },
+            "detail": {
+                "title": "车牌识别"
+            },
+            "carInfo": "车辆信息",
+            "ownerPerson": "身份信息",
+            "targetId": "车牌号码",
+            "brand":"车辆品牌",
+            "carColor":"车辆颜色",
+            "carType":"车辆类型",
+            "owner":"车主",
+            "address":"地址",
+            "personId":"证件号码",
+            "name":"姓名",
+            "imageId":"照片",
+            "birthday":"出生年月日"
+        },
+        "workRecordFace": {
+            "home": {
+                "title": "人像识别"
+            },
+            "detail": {
+                "title": "人像识别"
+            },
+            "noFace": "无识别结果",
+            "person": "身份信息",
+            "dangerLevel1": "上访人员",
+            "dangerLevel2": "有案底",
+            "dangerLevel3": "一般逃犯",
+            "dangerLevel4": "通缉犯",
+            "collectOnly": "只采集",
+            "noMatch": "不在库中"
+        }
+    }
+}

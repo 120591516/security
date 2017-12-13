@@ -1,0 +1,59 @@
+<div>
+    <h2 data-translate="glxssSecurityApp.logRecord.home.title">Log Records</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button type="submit"
+                        ui-sref="{{ vm.previousState }}"
+                        class="btn btn-info">
+                    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+                </button>
+                <button class="btn btn-primary" ui-sref="work-record-glxss.recognition-record-glxss.log-record-glxss.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="glxssSecurityApp.logRecord.home.createLabel">
+                        Create new Log Record
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th><span data-translate="glxssSecurityApp.logRecord.label.text">Text</span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="glxssSecurityApp.logRecord.label.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdBy.login"><span data-translate="glxssSecurityApp.logRecord.label.createdBy">Created By</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="logRecord in vm.logRecords track by logRecord.id">
+                    <td class="col-md-6">{{logRecord.text}}</td>
+                    <td>{{logRecord.createdDate | date:'medium'}}</td>
+                    <td>
+                        {{logRecord.createdByLogin}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="work-record-glxss.recognition-record-glxss.log-record-glxss-detail({rid:logRecord.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="work-record-glxss.recognition-record-glxss.log-record-glxss.delete({rid:logRecord.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

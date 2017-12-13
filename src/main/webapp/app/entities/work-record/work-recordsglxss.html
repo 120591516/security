@@ -1,0 +1,104 @@
+<div>
+    <h2 data-translate="glxssSecurityApp.workRecord.home.title">Work Records</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="work-record-glxss.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="glxssSecurityApp.workRecord.home.createLabel">
+                        Create new Work Record
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="type"><span data-translate="glxssSecurityApp.workRecord.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="targetId"><span data-translate="glxssSecurityApp.workRecord.targetId">Target Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="targetPicId"><span data-translate="glxssSecurityApp.workRecord.targetPicId">Target Pic Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sourcePicId"><span data-translate="glxssSecurityApp.workRecord.sourcePicId">Source Pic Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="similarity"><span data-translate="glxssSecurityApp.workRecord.similarity">Similarity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="attention"><span data-translate="glxssSecurityApp.workRecord.attention">Attention</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="report"><span data-translate="glxssSecurityApp.workRecord.report">Report</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="reportDelay"><span data-translate="glxssSecurityApp.workRecord.reportDelay">Report Delay</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="latitude"><span data-translate="glxssSecurityApp.workRecord.latitude">Latitude</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="longitude"><span data-translate="glxssSecurityApp.workRecord.longitude">Longitude</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="danger1"><span data-translate="glxssSecurityApp.workRecord.danger1">Danger 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="danger2"><span data-translate="glxssSecurityApp.workRecord.danger2">Danger 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="danger3"><span data-translate="glxssSecurityApp.workRecord.danger3">Danger 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="danger4"><span data-translate="glxssSecurityApp.workRecord.danger4">Danger 4</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="danger5"><span data-translate="glxssSecurityApp.workRecord.danger5">Danger 5</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deleted"><span data-translate="glxssSecurityApp.workRecord.deleted">Deleted</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastRecognizedDate"><span data-translate="glxssSecurityApp.workRecord.lastRecognizedDate">Last Recognized Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="glxssSecurityApp.workRecord.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastModifiedDate"><span data-translate="glxssSecurityApp.workRecord.lastModifiedDate">Last Modified Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdByLogin"><span data-translate="glxssSecurityApp.workRecord.createdBy">Created By</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastModifiedByLogin"><span data-translate="glxssSecurityApp.workRecord.lastModifiedBy">Last Modified By</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="workRecord in vm.workRecords track by workRecord.id">
+                    <td><a ui-sref="work-record-glxss-detail({id:workRecord.id})">{{workRecord.id}}</a></td>
+                    <td>{{workRecord.type}}</td>
+                    <td>{{workRecord.targetId}}</td>
+                    <td>{{workRecord.targetPicId}}</td>
+                    <td><img ng-src="{{'data:image/jpeg;base64,' + workRecord.sourcePicBase64}}"></td>
+                    <td>{{workRecord.similarity}}</td>
+                    <td>{{workRecord.attention}}</td>
+                    <td>{{workRecord.report}}</td>
+                    <td>{{workRecord.reportDelay}}</td>
+                    <td>{{workRecord.latitude}}</td>
+                    <td>{{workRecord.longitude}}</td>
+                    <td>{{workRecord.danger1}}</td>
+                    <td>{{workRecord.danger2}}</td>
+                    <td>{{workRecord.danger3}}</td>
+                    <td>{{workRecord.danger4}}</td>
+                    <td>{{workRecord.danger5}}</td>
+                    <td>{{workRecord.deleted}}</td>
+                    <td>{{workRecord.lastRecognizedDate | date:'medium'}}</td>
+                    <td>{{workRecord.createdDate | date:'medium'}}</td>
+                    <td>{{workRecord.lastModifiedDate | date:'medium'}}</td>
+                    <td>
+                        {{workRecord.createdByLogin}}
+                    </td>
+                    <td>
+                        {{workRecord.lastModifiedByLogin}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="work-record-glxss-detail({id:workRecord.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="work-record-glxss.edit({id:workRecord.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="work-record-glxss.delete({id:workRecord.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

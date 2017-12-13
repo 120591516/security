@@ -1,0 +1,17 @@
+// JDL definition for application 'GlxssSecurity' generated with command 'yo jhipster:export-jdl'
+// JDL动态系统配置enity
+
+// 系统配置entity，对应数据库表格system_config
+entity SystemConfig (system_config) {
+  // 参数名称
+  key String required,
+  // 参数值
+  value String
+}
+
+// 生成SytemConfigDTO
+dto SystemConfig with mapstruct
+// SystemConfig的列表页使用infinite-scroll（无限下拉）
+paginate SystemConfig with infinite-scroll
+// angularjs前缀添加glxss
+angularSuffix SystemConfig with glxss

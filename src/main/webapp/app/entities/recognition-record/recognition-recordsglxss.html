@@ -1,0 +1,86 @@
+<div>
+    <h2 data-translate="glxssSecurityApp.recognitionRecord.home.title">Recognition Records</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="recognition-record-glxss.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="glxssSecurityApp.recognitionRecord.home.createLabel">
+                        Create new Recognition Record
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="type"><span data-translate="glxssSecurityApp.recognitionRecord.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sourcePicId"><span data-translate="glxssSecurityApp.recognitionRecord.sourcePicId">Source Pic Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="similarity"><span data-translate="glxssSecurityApp.recognitionRecord.similarity">Similarity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="attention"><span data-translate="glxssSecurityApp.recognitionRecord.attention">Attention</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="latitude"><span data-translate="glxssSecurityApp.recognitionRecord.latitude">Latitude</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="longitude"><span data-translate="glxssSecurityApp.recognitionRecord.longitude">Longitude</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="info"><span data-translate="glxssSecurityApp.recognitionRecord.info">Info</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deleted"><span data-translate="glxssSecurityApp.recognitionRecord.deleted">Deleted</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="glxssSecurityApp.recognitionRecord.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastModifiedDate"><span data-translate="glxssSecurityApp.recognitionRecord.lastModifiedDate">Last Modified Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdByLogin"><span data-translate="glxssSecurityApp.recognitionRecord.createdBy">Created By</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastModifiedByLogin"><span data-translate="glxssSecurityApp.recognitionRecord.lastModifiedBy">Last Modified By</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="workRecordId"><span data-translate="glxssSecurityApp.recognitionRecord.workRecord">Work Record</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="recognitionRecord in vm.recognitionRecords track by recognitionRecord.id">
+                    <td><a ui-sref="recognition-record-glxss-detail({id:recognitionRecord.id})">{{recognitionRecord.id}}</a></td>
+                    <td>{{recognitionRecord.type}}</td>
+                    <td>{{recognitionRecord.sourcePicId}}</td>
+                    <td>{{recognitionRecord.similarity}}</td>
+                    <td>{{recognitionRecord.attention}}</td>
+                    <td>{{recognitionRecord.latitude}}</td>
+                    <td>{{recognitionRecord.longitude}}</td>
+                    <td>{{recognitionRecord.info}}</td>
+                    <td>{{recognitionRecord.deleted}}</td>
+                    <td>{{recognitionRecord.createdDate | date:'medium'}}</td>
+                    <td>{{recognitionRecord.lastModifiedDate | date:'medium'}}</td>
+                    <td>
+                        {{recognitionRecord.createdByLogin}}
+                    </td>
+                    <td>
+                        {{recognitionRecord.lastModifiedByLogin}}
+                    </td>
+                    <td>
+                        <a ui-sref="work-record-glxss-detail({id:recognitionRecord.workRecordId})">{{recognitionRecord.workRecordId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="recognition-record-glxss-detail({id:recognitionRecord.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="recognition-record-glxss.edit({id:recognitionRecord.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="recognition-record-glxss.delete({id:recognitionRecord.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

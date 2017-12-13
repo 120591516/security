@@ -1,0 +1,34 @@
+{
+    "glxssSecurityApp": {
+        "localFace" : {
+            "home": {
+                "title": "离线人像库 {{ name }}",
+                "createLabel": "添加人像",
+                "createOrEditLabel": "添加或修改人像"
+            },
+            "created": "人像添加成功",
+            "updated": "人像修改成功",
+            "deleted": "人像删除成功",
+            "delete": {
+                "question": "请确认是否删除人像 {{ id }}?"
+            },
+            "uploadImage": "点击此处上传",
+            "detail": {
+                "title": "离线人像"
+            },
+            "name": "姓名",
+            "personId": "身份证号",
+            "gender": "性别",
+            "birthday": "生日",
+            "address": "住址",
+            "attention": "警示",
+            "danger": "重点人员",
+            "image": "人像照片",
+            "model": "模型名称",
+            "hash": "Hash",
+            "createdDate": "创建时间",
+            "lastModifiedDate": "上次修改时间",
+            "faceSet": "人像库"
+        }
+    }
+}

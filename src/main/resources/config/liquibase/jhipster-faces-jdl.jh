@@ -1,0 +1,39 @@
+// JDL definition for application 'GlxssSecurity' generated with command 'yo jhipster:export-jdl'
+
+entity LocalFaceSet (local_face_set) {
+  name String required maxlength(100),
+  deleted Boolean,
+  createdDate ZonedDateTime,
+  lastModifiedDate ZonedDateTime,
+  activated Boolean
+}
+
+entity LocalFace (local_face) {
+  name String required maxlength(64),
+  personId String maxlength(18),
+  gender Integer,
+  birthday LocalDate,
+  address String maxlength(4000),
+  attention Boolean,
+  danger Integer,
+  image String required maxlength(500),
+  model String maxlength(100),
+  hash String maxlength(2000),
+  deleted Boolean,
+  createdDate ZonedDateTime,
+  lastModifiedDate ZonedDateTime
+}
+
+relationship ManyToOne {
+  LocalFaceSet{createdBy(login)} to User,
+  LocalFaceSet{lastModifiedBy(login)} to User,
+  LocalFace{faceSet} to LocalFaceSet
+}
+
+relationship ManyToMany {
+  LocalFaceSet{user} to User{localFaceSet}
+}
+
+dto * with mapstruct
+paginate * with pagination
+angularSuffix * with glxss

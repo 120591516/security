@@ -1,0 +1,25 @@
+
+<div>
+    <h2><span data-translate="glxssSecurityApp.logRecord.detail.title">Log Record</span> {{vm.logRecord.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="glxssSecurityApp.logRecord.label.text">Text</span></dt>
+        <dd>
+            <span>{{vm.logRecord.textBase}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.logRecord.label.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{vm.logRecord.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.logRecord.label.createdBy">Created By</span></dt>
+        <dd>
+            {{vm.logRecord.createdByLogin}}
+        </dd>
+    </dl>
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+</div>

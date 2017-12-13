@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity LocalFaceSet.
+    -->
+    <changeSet id="20170606140911-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
+                                 baseTableName="local_face_set"
+                                 constraintName="fk_local_face_set_created_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="last_modified_by_id"
+                                 baseTableName="local_face_set"
+                                 constraintName="fk_local_face_set_last_modified_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="local_face_sets_id"
+                                 baseTableName="local_face_set_user"
+                                 constraintName="fk_local_face_set_user_local_face_sets_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="local_face_set"/>
+        <addForeignKeyConstraint baseColumnNames="users_id"
+                                 baseTableName="local_face_set_user"
+                                 constraintName="fk_local_face_set_user_users_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
+    </changeSet>
+</databaseChangeLog>

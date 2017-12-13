@@ -1,0 +1,131 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLocalFaceLabel" data-translate="glxssSecurityApp.localFace.home.createOrEditLabel">Create or edit a Local Face</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.localFace.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.localFace.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="glxssSecurityApp.localFace.image" for="field_image">Image</label>
+            <input type="hidden" class="form-control" name="image" id="field_image" ng-model="vm.localFace.image" required ng-maxlength="500"/>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <storage-img picid="vm.localFace.image" ng-if="vm.localFace.image" class="form-pic pic-md"/>
+                </div>
+            </div>
+
+            <div class="btn btn-primary" class="form-control" ngf-accept="'image/jpeg,image/png'" ngf-select="vm.upload($file)" data-translate="glxssSecurityApp.localFace.uploadImage"  ngf-validate="{size: {min:'10KB', max:'5MB'}}">Upload image</div>
+
+            <div ng-show="editForm.image.$invalid">
+                <!--<p class="help-block"
+                   ng-show="editForm.image.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>-->
+                <p class="help-block"
+                   ng-show="editForm.image.$error.required" data-translate="entity.validation.imagesize">
+                    image size is 1m
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.image.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="500">
+                    This field cannot be longer than 500 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="glxssSecurityApp.localFace.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.localFace.name"
+                    required ng-maxlength="64"/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="64">
+                    This field cannot be longer than 64 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="glxssSecurityApp.localFace.personId" for="field_personId">Person Id</label>
+            <input type="text" class="form-control" name="personId" id="field_personId"
+                    ng-model="vm.localFace.personId"
+                    ng-maxlength="18"/>
+            <div ng-show="editForm.personId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.personId.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="18">
+                    This field cannot be longer than 18 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="glxssSecurityApp.localFace.gender" for="field_gender">Gender</label>
+            <select class="form-control" name="gender" ng-model="vm.gender"
+                    id="field_gender" ng-options="gender.name for gender in vm.genders track by gender.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="glxssSecurityApp.localFace.birthday" for="field_birthday">Birthday</label>
+                <div class="input-group">
+                    <input id="field_birthday" type="text" class="form-control" name="birthday" uib-datepicker-popup="{{dateformat}}" ng-model="vm.localFace.birthday" is-open="vm.datePickerOpenStatus.birthday"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('birthday')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="glxssSecurityApp.localFace.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="vm.localFace.address"
+                    ng-maxlength="4000"/>
+            <div ng-show="editForm.address.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.address.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="4000">
+                    This field cannot be longer than 4000 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="glxssSecurityApp.localFace.attention" for="field_attention">Attention</label>
+                <input type="checkbox" name="attention" id="field_attention"
+                          ng-model="vm.localFace.attention"/>
+        </div>
+        <div class="form-group hidden">
+            <label class="control-label" data-translate="glxssSecurityApp.localFace.danger" for="field_danger">Danger</label>
+            <input type="number" class="form-control" name="danger" id="field_danger"
+                    ng-model="vm.localFace.danger"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="glxssSecurityApp.localFace.model" for="field_model">Model</label>
+            <input type="text" class="form-control" name="model" id="field_model"
+                    ng-model="vm.localFace.model"
+                    ng-maxlength="100"/>
+            <div ng-show="editForm.model.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.model.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="100">
+                    This field cannot be longer than 100 characters.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

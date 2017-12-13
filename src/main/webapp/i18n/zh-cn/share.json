@@ -1,0 +1,44 @@
+{
+    "glxssSecurityApp": {
+        "share" : {
+            "home": {
+                "title": "推送",
+                "createLabel": "添加新库",
+                "createOrEditLabel": "推送离线库给其他用户"
+            },
+            "viewFaces": "人像列表",
+            "created": "离线人像库推送成功",
+            "updated": "离线人像库推送成功",
+            "deleted": "删除成功",
+            "delete": {
+                "question": "请确认是否要删除推送 {{ login }}?"
+            },
+            "detail": {
+                "title": "离线人像库"
+            },
+            "label": {
+                "activated": "已激活",
+                "deactivated": "未激活"
+            },
+            "name": "库名",
+            "activated": "是否激活",
+            "createdDate": "创建时间",
+            "lastModifiedDate": "上次修改时间",
+            "createdBy": "创建人",
+            "lastModifiedBy": "最近一次修改人",
+            "user": "分发用户",
+            "pushUser": "推送用户",
+            "pushDate": "推送时间",
+            "add": "添加",
+            "input":{
+                "title": "推送给",
+                "":""
+            },
+            "error":{
+              "notNull":"不可为空！"
+            },
+            "name": "用户名",
+            "share": "推送"
+        }
+    }
+}

@@ -1,0 +1,62 @@
+// JDL definition for application 'GlxssSecurity' generated with command 'yo jhipster:export-jdl'
+
+entity WorkRecord (work_record) {
+  type Integer required,
+  targetId String,
+  targetPicId String,
+  sourcePicId String required,
+  similarity Double,
+  attention Boolean,
+  report Boolean,
+  reportDelay Long,
+  latitude Double,
+  longitude Double,
+  danger1 Integer,
+  danger2 Integer,
+  danger3 Integer,
+  danger4 Integer,
+  danger5 Integer,
+  deleted Boolean,
+  lastRecognizedDate ZonedDateTime,
+  createdDate ZonedDateTime,
+  lastModifiedDate ZonedDateTime
+}
+entity RecognitionRecord (recognition_record) {
+  type Integer required,
+  sourcePicId String required,
+  similarity Double,
+  attention Boolean,
+  latitude Double,
+  longitude Double,
+  info byte[],
+  deleted Boolean,
+  createdDate ZonedDateTime,
+  lastModifiedDate ZonedDateTime
+}
+entity LogRecord (log_record) {
+  type Integer required,
+  text byte[],
+  picId String,
+  deleted Boolean,
+  createdDate ZonedDateTime
+}
+
+relationship ManyToOne {
+  WorkRecord{createdBy(login)} to User,
+  WorkRecord{lastModifiedBy(login)} to User,
+  RecognitionRecord{createdBy(login)} to User,
+  RecognitionRecord{lastModifiedBy(login)} to User,
+  RecognitionRecord{workRecord} to WorkRecord,
+  LogRecord{workRecord} to WorkRecord,
+  LogRecord{createdBy(login)} to User
+}
+
+dto WorkRecord with mapstruct
+paginate WorkRecord with pagination
+angularSuffix WorkRecord with glxss
+dto RecognitionRecord with mapstruct
+paginate RecognitionRecord with infinite-scroll
+angularSuffix RecognitionRecord with glxss
+dto LogRecord with mapstruct
+paginate LogRecord with infinite-scroll
+angularSuffix LogRecord with glxss

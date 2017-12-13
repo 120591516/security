@@ -1,0 +1,47 @@
+{
+    "glxssSecurityApp": {
+        "recognitionRecord" : {
+            "label":{
+                "report": "已处理",
+                "danger1": "假套牌",
+                "danger2": "违章",
+                "danger3": "其他违法",
+                "attention": "警示"
+            },
+            "home": {
+                "title": "识别记录",
+                "createLabel": "Create a new Recognition Record",
+                "createOrEditLabel": "Create or edit a Recognition Record"
+            },
+            "created": "A new Recognition Record is created with identifier {{ param }}",
+            "updated": "A Recognition Record is updated with identifier {{ param }}",
+            "deleted": "识别记录删除成功",
+            "delete": {
+                "question": "请确认删除该条识别记录？"
+            },
+            "detail": {
+                "title": "识别记录"
+            },
+            "type": "Type",
+            "sourcePicId": "采集照片",
+            "targetPicId": "比对照片",
+            "similarity": "相似度",
+            "attention": "是否警示",
+            "th-attention": "警示信息",
+            "latitude": "Latitude",
+            "longitude": "Longitude",
+            "info": "Info",
+            "createdDate": "识别时间",
+            "lastModifiedDate": "Last Modified Date",
+            "createdBy": "创建人",
+            "lastModifiedBy": "Last Modified By",
+            "workRecord": "Work Record"
+        },
+        "recognitionRecordFace" : {
+            "detail": {
+                "title": "人像识别记录"
+            },
+            "person": "身份信息"
+        }
+    }
+}

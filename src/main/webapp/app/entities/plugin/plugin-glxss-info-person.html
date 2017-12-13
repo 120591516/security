@@ -1,0 +1,49 @@
+
+<div>
+    <h2><span data-translate="glxssSecurityApp.workRecordCarPlate.ownerPerson">Work Record</span></h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.imageId">imageId</span></dt>
+        <dd>
+            <span><person-img-not-url picid="{{vm.ownerPerson.imageId}}" nostatus="true" class="pic-md"/></span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.name">name</span></dt>
+        <dd>
+            <span>{{vm.ownerPerson.name}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.label.attention">Attention</span></dt>
+        <dd>
+            <div>
+                <div class="flow-left" ng-if="vm.ownerPerson.attention">
+                    <span class="label danger label-danger" data-translate="glxssSecurityApp.workRecord.label.attention">警示</span>
+                </div>
+                <div class="flow-left" ng-if="vm.ownerPerson.report">
+                    <span class="label danger label-warning" data-translate="glxssSecurityApp.workRecord.label.report">已处理</span>
+                </div>
+                <div class="flow-left" ng-if="vm.ownerPerson.danger">
+                    <person-danger danger="{{vm.ownerPerson.danger}}"/>
+                </div>
+            </div>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.personId">personId</span></dt>
+        <dd>
+            <span>{{vm.ownerPerson.personId}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.birthday">birthday</span></dt>
+        <dd>
+            <span>{{vm.ownerPerson.birthday | date}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.address">address</span></dt>
+        <dd>
+            <span>{{vm.ownerPerson.address}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}({id:vm.workRecordId, rid:vm.recognitionRecordId})"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+</div>

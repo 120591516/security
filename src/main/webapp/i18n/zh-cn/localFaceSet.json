@@ -1,0 +1,38 @@
+{
+    "glxssSecurityApp": {
+        "localFaceSet" : {
+            "home": {
+                "title": "离线人像库",
+                "createLabel": "添加新库",
+                "createOrEditLabel": "添加或修改库信息"
+            },
+            "viewFaces": "人像列表",
+            "created": "离线人像库创建成功",
+            "updated": "离线人像库修改成功",
+            "deleted": "离线人像库删除成功",
+            "delete": {
+                "question": "请确认是否要删除人像库 {{ id }}?"
+            },
+            "detail": {
+                "pushList": "推送列表",
+                "title": "离线人像库"
+            },
+            "label": {
+                "activated": "已激活",
+                "deactivated": "未激活"
+            },
+            "name": "库名",
+            "activated": "是否激活",
+            "createdDate": "创建时间",
+            "lastModifiedDate": "上次修改时间",
+            "createdBy": "创建人",
+            "lastModifiedBy": "最近一次修改人",
+            "user": "分发用户",
+            "shareUser":"分享用户",
+            "share": "分享",
+            "hash": "Hash",
+            "yes": "有",
+            "no": "无"
+        }
+    }
+}

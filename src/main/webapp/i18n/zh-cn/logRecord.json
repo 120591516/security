@@ -1,0 +1,40 @@
+{
+    "glxssSecurityApp": {
+        "logRecord" : {
+            "home": {
+                "title": "处理记录",
+                "createLabel": "创建新处理记录",
+                "createOrEditLabel": "创建处理记录"
+            },
+            "created": "处理记录创建成功",
+            "updated": "处理记录更新成功",
+            "deleted": "处理记录删除成功",
+            "delete": {
+                "question": "确实要删除处理记录吗 {{ id }}?"
+            },
+            "detail": {
+                "title": "处理记录"
+            },
+            "action": {
+                "addblob": "增加 BLOB",
+                "addimage": "增加图片",
+                "back": "返回",
+                "cancel": "取消",
+                "delete": "删除",
+                "edit": "编辑",
+                "open": "Open",
+                "save": "保存",
+                "view": "查看"
+            },
+            "label": {
+                "type": "类型",
+                "text": "文本",
+                "picId": "图片",
+                "deleted": "删除",
+                "createdDate": "创建日期",
+                "createdBy": "创建人",
+                "workRecord": "工作记录"
+            }
+        }
+    }
+}

@@ -1,0 +1,97 @@
+<div ng-cloak>
+    <h2 data-translate="glxssSecurityApp.workRecordCarPlate.home.title">Work Records</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="column">
+            <div class="col-md-10 col-md-offset-10">
+                <button type="submit"
+                        ui-sref="work-record-glxss-real-time"
+                        class="btn btn-primary">
+                    <span class="glyphicon "></span>&nbsp;<span data-translate="glxssSecurityApp.workRecord.realTime"> realTime</span>
+                </button>
+                <button type="submit"
+                        ui-sref="work-record-glxss({type:1})"
+                        class="btn btn-default">
+                    <span class="glyphicon "></span>&nbsp;<span data-translate="glxssSecurityApp.workRecord.paging"> paging</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th class="col-md-1"><span data-translate="glxssSecurityApp.workRecord.sourcePicId">Source Pic Id</span> </th>
+                    <th class="col-md-1"><span data-translate="glxssSecurityApp.workRecordCarPlate.carInfo">Car Info</span> </th>
+                    <th class="col-md-2"><span data-translate="glxssSecurityApp.workRecordCarPlate.targetId">Target Id</span> </th>
+                    <th class="col-md-1"><span data-translate="glxssSecurityApp.workRecordCarPlate.ownerPerson">Owner Info</span> </th>
+                    <th><span data-translate="glxssSecurityApp.workRecord.th-attention">Attention</span></th>
+                    <th has-authority="ROLE_ADMIN"><span data-translate="glxssSecurityApp.workRecord.createdBy">Created By</span></th>
+                    <th><span data-translate="glxssSecurityApp.workRecord.createdDate">Created Date</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="workRecord in vm.workRecords track by workRecord.id">
+                    <td class="col-md-1">
+                        <a ui-sref="work-record-glxss.recognition-record-glxss({id:workRecord.id})">
+                            <storage-img picid="workRecord.sourcePicId" class="car-img"/>
+                        </a>
+                    </td>
+                    <td class="col-md-1">
+                        <div ng-if="workRecord.carPlate && workRecord.carPlate.carType">
+                            {{workRecord.carPlate.carType}}
+                        </div>
+                        <div ng-if="workRecord.carPlate && workRecord.carPlate.brand">
+                            {{workRecord.carPlate.brand}}
+                            {{workRecord.carPlate.model}}
+                        </div>
+                        <div ng-if="workRecord.carPlate && workRecord.carPlate.carColor">
+                            {{workRecord.carPlate.carColor}}
+                        </div>
+                    </td>
+                    <td class="col-md-2">
+                        <a ui-sref="work-record-glxss-car-info({id:workRecord.id, cid:workRecord.targetId})">
+                            <work-record-car-plate carplate="{{workRecord.targetId}}"></work-record-car-plate>
+                        </a>
+                    </td>
+                    <td class="col-md-1">
+                        <person-info ng-if="workRecord.status" person="workRecord.carPlate.ownerPerson"></person-info>
+                    </td>
+                    <td class="col-md-1">
+                        <car-danger data="workRecord"></car-danger>
+                    </td>
+                    <td has-authority="ROLE_ADMIN">
+                        {{workRecord.createdByLogin}}
+                        <br/>
+                        {{workRecord.createdByLastName}}{{workRecord.createdByFirstName}}
+                    </td>
+                    <td>{{workRecord.lastRecognizedDate | date:'medium'}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container bottoms">
+                            <div type="submit"
+                                    ui-sref="work-record-glxss.recognition-record-glxss({id:workRecord.id})"
+                                    class="btn btn-primary bottom">
+                                <span class="glyphicon glyphicon-list-alt bottom-iocn"></span>
+                                <span data-translate="entity.action.details"></span>
+                            </div>
+                            <div type="submit"
+                                    ui-sref="work-record-glxss.edit({id:workRecord.id})"
+                                    class="btn btn-primary bottom">
+                                <span class="glyphicon glyphicon-pencil bottom-iocn"></span>
+                                <span data-translate="entity.action.edit"></span>
+                            </div>
+                            <div type="submit"
+                                    ui-sref="work-record-glxss.delete({id:workRecord.id})"
+                                    class="btn btn-primary bottom ">
+                                <span class="glyphicon glyphicon-trash bottom-iocn"></span>
+                                <span data-translate="entity.action.delete"></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

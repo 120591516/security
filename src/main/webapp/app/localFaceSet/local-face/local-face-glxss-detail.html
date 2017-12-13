@@ -1,0 +1,59 @@
+<div>
+    <h2><span data-translate="glxssSecurityApp.localFace.detail.title">Local Face</span> {{vm.localFace.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="glxssSecurityApp.localFace.name">Name</span></dt>
+        <dd>
+            <span>{{vm.localFace.name}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFace.image">Image</span></dt>
+        <dd>
+            <storage-img picid="vm.localFace.image" class="col-md-8 ng-isolate-scope"/>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFace.personId">Person Id</span></dt>
+        <dd>
+            <span>{{vm.localFace.personId}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFace.gender">Gender</span></dt>
+        <dd>
+            <span><person-gender gender="vm.localFace.gender"></person-gender></span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFace.birthday">Birthday</span></dt>
+        <dd>
+            <span>{{vm.localFace.birthday | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFace.address">Address</span></dt>
+        <dd>
+            <span>{{vm.localFace.address}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFace.attention">Attention</span></dt>
+        <dd>
+            <span class="danger label-danger" ng-if="vm.localFace.attention"
+                  data-translate="glxssSecurityApp.localFace.attention">Attention</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFace.model">Model</span></dt>
+        <dd>
+            <span>{{vm.localFace.model}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFace.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{vm.localFace.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFace.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{vm.localFace.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="local-face-glxss-detail.edit({id:vm.localFace.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

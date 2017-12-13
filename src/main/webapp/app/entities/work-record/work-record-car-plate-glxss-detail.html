@@ -1,0 +1,53 @@
+
+<div>
+    <h2><span data-translate="glxssSecurityApp.workRecordCarPlate.detail.title">Work Record</span> {{vm.workRecord.targetId}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="glxssSecurityApp.workRecord.sourcePicId">Source Pic Id</span></dt>
+        <dd>
+            <span>{{vm.workRecord.sourcePicId}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.attention">Attention</span></dt>
+        <dd>
+            <span>{{vm.workRecord.attention}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.report">Report</span></dt>
+        <dd>
+            <span>{{vm.workRecord.report}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.latitude">Latitude</span></dt>
+        <dd>
+            <span>{{vm.workRecord.latitude}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.longitude">Longitude</span></dt>
+        <dd>
+            <span>{{vm.workRecord.longitude}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.lastRecognizedDate">Last Recognized Date</span></dt>
+        <dd>
+            <span>{{vm.workRecord.lastRecognizedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{vm.workRecord.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.createdBy">Created By</span></dt>
+        <dd>
+            {{vm.workRecord.createdByLogin}}
+            <br/>
+            {{vm.workRecord.createdByLastName}}{{vm.workRecord.createdByFirstName}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="work-record-glxss-detail.edit({id:vm.workRecord.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

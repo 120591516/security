@@ -1,0 +1,106 @@
+<div>
+    <h2>
+        <div class="col-md-12 ">
+            <div class="flow-left plate">
+                <span data-translate="glxssSecurityApp.workRecordCarPlate.detail.title">Work Record</span>
+            </div>
+            <div class="col-md-4 flow-left">
+                <a ui-sref="work-record-glxss-car-info({id:vm.workRecord.id, cid:vm.workRecord.targetId})">
+                    <work-record-car-plate  carplate="{{vm.workRecord.targetId}}"></work-record-car-plate>
+                </a>
+            </div>
+        </div>
+    </h2>
+    <hr>
+    <br>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="glxssSecurityApp.workRecord.sourcePicId">Source Pic Id</span></dt>
+        <dd>
+            <span><storage-img picid="vm.workRecord.sourcePicId" class="pic-lg"/></span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.label.attention">Attention</span></dt>
+        <dd>
+            <car-danger data="vm.workRecord"></car-danger>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.ownerPerson">Owner Info</span></dt>
+        <dd>
+            <person-info ng-if="vm.workRecord.status" person="vm.workRecord.carPlate.ownerPerson" workRecordId="vm.workRecord.id"></person-info>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.lastRecognizedDate">Last Recognized Date</span></dt>
+        <dd>
+            <span>{{vm.workRecord.lastRecognizedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{vm.workRecord.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.createdBy">Created By</span></dt>
+        <dd>
+            {{vm.workRecord.createdByLogin}}
+            <br/>
+            {{vm.workRecord.createdByLastName}}{{vm.workRecord.createdByFirstName}}
+        </dd>
+    </dl>
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="work-record-glxss.recognition-record-glxss.edit({id:vm.workRecord.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+
+    <button type="button" ui-sref="work-record-glxss.recognition-record-glxss.log-record-glxss({id:vm.workRecord.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-folder-open"></span>
+        <span class="hidden-sm-down" data-translate="global.menu.entities.logRecordGlxss"> Edit</span>
+    </button>
+    <hr>
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th><span data-translate="glxssSecurityApp.recognitionRecord.sourcePicId">Source Pic Id</span></th>
+                    <th jh-sort-by="createdDate"><span data-translate="glxssSecurityApp.recognitionRecord.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="recognitionRecord in vm.recognitionRecords track by recognitionRecord.id">
+                    <td><storage-img picid="recognitionRecord.sourcePicId" class="pic-sm"/></td>
+                    <td>{{recognitionRecord.createdDate | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="work-record-glxss-detail({id:recognitionRecord.workRecordId})">{{recognitionRecord.workRecordId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="work-record-glxss.recognition-record-glxss-detail({rid:recognitionRecord.id})"
+                                    class="hidden btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="work-record-glxss.recognition-record-glxss.edit({rid:recognitionRecord.id})"
+                                    class="hidden btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="work-record-glxss.recognition-record-glxss.delete({rid:recognitionRecord.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

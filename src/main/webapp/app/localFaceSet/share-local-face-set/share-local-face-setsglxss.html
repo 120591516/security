@@ -1,0 +1,43 @@
+<div>
+    <h2 data-translate="glxssSecurityApp.shareLocalFaceSet.home.title">Local Face Sets</h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="name"><span data-translate="glxssSecurityApp.shareLocalFaceSet.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th><span data-translate="glxssSecurityApp.shareLocalFaceSet.createdBy">createdBy</span></th>
+                    <th jh-sort-by="activated"><span data-translate="glxssSecurityApp.shareLocalFaceSet.activated">Activated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th><span data-translate="glxssSecurityApp.shareLocalFaceSet.localFaces">localFaces</span></th>
+                    <th jh-sort-by="lastModifiedDate"><span data-translate="glxssSecurityApp.shareLocalFaceSet.lastModifiedDate">Last Modified Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="localFaceSet in vm.localFaceSets track by localFaceSet.id">
+                    <td>{{localFaceSet.name}}</td>
+                    <td>{{localFaceSet.createdByLogin | date:'medium'}}</td>
+                    <td>
+                        <span class="label label-success" ng-if="localFaceSet.activated" data-translate="glxssSecurityApp.shareLocalFaceSet.label.activated">Activated</span>
+                        <span class="label label-warning" ng-if="!localFaceSet.activated" data-translate="glxssSecurityApp.shareLocalFaceSet.label.deactivated">Deactivated</span>
+                    </td>
+                    <td>{{localFaceSet.localFaces}}</td>
+                    <td>{{localFaceSet.lastModifiedDate | date:'medium'}}</td>
+                    <td class="text-right">
+                        <button type="submit"
+                                ui-sref="share-local-face-set-glxss.delete({id:localFaceSet.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

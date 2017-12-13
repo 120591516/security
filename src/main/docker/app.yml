@@ -1,0 +1,14 @@
+version: '2'
+services:
+    glxsssecurity-app:
+        image: glxsssecurity
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://glxsssecurity-mysql:3306/glxsssecurity?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    glxsssecurity-mysql:
+        extends:
+            file: mysql.yml
+            service: glxsssecurity-mysql

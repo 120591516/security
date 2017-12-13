@@ -1,0 +1,104 @@
+
+<div>
+    <h2><span data-translate="glxssSecurityApp.localFaceSet.detail.title">Local Face Set</span> {{vm.localFaceSet.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="glxssSecurityApp.localFaceSet.name">Name</span></dt>
+        <dd>
+            <span>{{vm.localFaceSet.name}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFaceSet.activated">Activated</span></dt>
+        <dd>
+            <span class="label label-success" ng-if="vm.localFaceSet.activated" data-translate="glxssSecurityApp.localFaceSet.label.activated">Activated</span>
+            <span class="label label-warning" ng-if="!vm.localFaceSet.activated" data-translate="glxssSecurityApp.localFaceSet.label.deactivated">Deactivated</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFaceSet.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{vm.localFaceSet.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFaceSet.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{vm.localFaceSet.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFaceSet.createdBy">Created By</span></dt>
+        <dd>
+            {{vm.localFaceSet.createdByLogin}}
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.localFaceSet.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            {{vm.localFaceSet.lastModifiedByLogin}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="local-face-set-glxss-detail.edit({id:vm.localFaceSet.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+    <hr>
+    <h3><span data-translate="glxssSecurityApp.localFaceSet.detail.pushList">Local Face Set</span></h3>
+    <div>
+        <form name="shareForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+            <div class="modal-body">
+                <div class="form-group col-md-6">
+                    <input type="text" name="name" class="form-control"
+                           ng-minlength=1 ng-maxlength=20 ng-model="vm.name"
+                           ng-pattern="/^[_'.@A-Za-z0-9-]*$/"
+                           ng-required="true"
+                           placeholder="请输入您要推送的用户名"/>
+
+                    <div ng-show="shareForm.name.$invalid">
+                        <p class="help-block"
+                           ng-show="shareForm.name.$error.required" data-translate="entity.validation.required">
+                            This field is required.
+                        </p>
+
+                        <p class="help-block"
+                           ng-show="shareForm.name.$error.maxlength" data-translate="entity.validation.maxlength"
+                           translate-value-max="20">
+                            This field cannot be longer than 20 characters.
+                        </p>
+                    </div>
+                </div>
+                <button type="submit" ng-disabled="shareForm.$invalid || vm.isSaving" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="glxssSecurityApp.share.add">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+    <hr>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th><span data-translate="glxssSecurityApp.share.pushUser">推送用户</span></th>
+                <th><span data-translate="glxssSecurityApp.share.pushDate">推送时间</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in vm.localFaceSet.users track by user.id">
+                <td>{{user.login}}</td>
+                <td>{{user.lastModifiedDate | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="local-face-set-glxss-detail.shareDelete({login:user.login,id:vm.localFaceSet.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

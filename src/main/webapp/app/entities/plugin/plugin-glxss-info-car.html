@@ -1,0 +1,42 @@
+<div>
+    <h2><span data-translate="glxssSecurityApp.workRecordCarPlate.carInfo">Work Record</span></h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.targetId">targetId</span></dt>
+        <dd>
+            <span>
+                <div class="col-md-4 plate-left">
+                    <work-record-car-plate carplate="{{vm.carInfo.id}}"></work-record-car-plate>
+                </div>
+            </span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.owner">owner</span></dt>
+        <dd>
+            <span>{{vm.carInfo.owner}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.address">address</span></dt>
+        <dd>
+            <span>{{vm.carInfo.address}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.brand">brand</span></dt>
+        <dd>
+            <span>{{vm.carInfo.brand}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.carColor">carColor</span></dt>
+        <dd>
+            <span>{{vm.carInfo.carColor}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecordCarPlate.carType">carType</span></dt>
+        <dd>
+            <span>{{vm.carInfo.carType}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}({id:vm.workRecordId})"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+</div>

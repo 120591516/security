@@ -1,0 +1,124 @@
+<div ng-cloak>
+    <h2 data-translate="glxssSecurityApp.workRecordFace.home.title">Work Records</h2>
+    <jhi-alert></jhi-alert>
+
+
+    <div class="container-fluid">
+        <div class="column">
+            <div class="col-md-10 col-md-offset-10">
+                <button type="submit"
+                        ui-sref="work-record-glxss-real-time"
+                        class="btn  btn-primary">
+                    <span class="glyphicon "></span>&nbsp;<span data-translate="glxssSecurityApp.workRecord.realTime"> realTime</span>
+                </button>
+                <button type="submit"
+                        ui-sref="work-record-glxss({type: 2})"
+                        class="btn btn-default">
+                     <span class="glyphicon "></span>&nbsp;<span data-translate="glxssSecurityApp.workRecord.paging"> paging</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th class="col-md-1"><span data-translate="glxssSecurityApp.workRecord.sourcePicId">Source Pic Id</span>
+                </th>
+                <th class="col-md-1"><span data-translate="glxssSecurityApp.workRecord.targetPicId">Target Pic</span>
+                </th>
+                <th class="col-md-1"><span data-translate="glxssSecurityApp.workRecord.similarity">Similarity</span>
+                </th>
+                <th class="col-md-1"><span data-translate="glxssSecurityApp.workRecordFace.person">Person</span></th>
+                <th>
+                    <span data-translate="glxssSecurityApp.workRecord.th-attention">Attention</span>
+                </th>
+                <th has-authority="ROLE_ADMIN">
+                    <span data-translate="glxssSecurityApp.workRecord.createdBy">Created By</span>
+                </th>
+                <th><span data-translate="glxssSecurityApp.workRecord.createdDate">Created Date</span></th>
+                <th></th>
+            </tr>
+            </thead>
+
+
+            <tbody>
+            <tr ng-repeat="workRecord in vm.workRecords">
+                <td class="col-md-1">
+                    <a ui-sref="work-record-glxss.recognition-record-glxss({id:workRecord.id})">
+                        <storage-img picid="workRecord.sourcePicId" class="pic-md person-img"/>
+                    </a>
+                </td>
+                <td class="col-md-1">
+                    <person-img picid="{{workRecord.targetPicId}}" status="workRecord.status"  person="workRecord.person"/>
+                </td>
+                <td class="col-md-1 similarity">
+                    <div ng-if="workRecord.status == 1">
+                        <similarity ng-if="workRecord.targetPicId" score="{{workRecord.similarity}}"/>
+                    </div>
+                </td>
+                <td class="col-md-1 a-color">
+                    <person-info ng-if="workRecord.status == 1" person="workRecord.person"></person-info>
+                </td>
+                <td class="col-md-1">
+                    <div>
+                        <div class="flow-left" ng-if="workRecord.attention">
+                            <span class="danger label-danger"
+                                  data-translate="glxssSecurityApp.workRecord.label.attention">警示</span>
+                        </div>
+                        <div class="flow-left" ng-if="workRecord.report">
+                            <span class="danger label-warning"
+                                  data-translate="glxssSecurityApp.workRecord.label.report">已处理</span>
+                        </div>
+                        <div ng-if="workRecord.danger1">
+                            <person-danger danger="workRecord.danger1"/>
+                        </div>
+                        <div ng-if="!workRecord.attention && !workRecord.report && !workRecord.danger1">
+                            <span class="danger nothing"
+                                  data-translate="glxssSecurityApp.workRecord.label.nothing">无</span>
+                        </div>
+                    </div>
+                </td>
+                <td has-authority="ROLE_ADMIN">
+                    {{workRecord.createdByLogin}}
+                    <br/>
+                    {{workRecord.createdByLastName}}{{workRecord.createdByFirstName}}
+                </td>
+                <td>{{workRecord.lastRecognizedDate | date:'medium'}}</td>
+                <td class="text-right col-md-2">
+                    <div class="btn-group flex-btn-group-container bottoms">
+                        <div type="submit"
+                             ui-sref="work-record-glxss.recognition-record-glxss({id:workRecord.id})"
+                             class="btn btn-primary bottom">
+                            <span class="glyphicon glyphicon-list-alt bottom-iocn"></span>
+                            <span data-translate="entity.action.details"></span>
+                        </div>
+                        <div type="submit"
+                             ui-sref="work-record-glxss.edit({id:workRecord.id})"
+                             class="btn btn-primary bottom">
+                            <span class="glyphicon glyphicon-pencil bottom-iocn"></span>
+                            <span data-translate="entity.action.edit"></span>
+                        </div>
+                        <div type="submit"
+                             ui-sref="work-record-glxss.delete({id:workRecord.id})"
+                             class="btn btn-primary bottom">
+                            <span class="glyphicon glyphicon-trash bottom-iocn"></span>
+                            <span data-translate="entity.action.delete"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+
+
+
+        </table>
+    </div>
+    <!--<div class="text-center">-->
+        <!--<jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>-->
+        <!--<uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage"-->
+                        <!--ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>-->
+    <!--</div>-->
+</div>

@@ -1,0 +1,103 @@
+
+<div>
+    <h2><span data-translate="glxssSecurityApp.workRecord.detail.title">Work Record</span> {{vm.workRecord.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="glxssSecurityApp.workRecord.type">Type</span></dt>
+        <dd>
+            <span>{{vm.workRecord.type}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.targetId">Target Id</span></dt>
+        <dd>
+            <span>{{vm.workRecord.targetId}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.targetPicId">Target Pic Id</span></dt>
+        <dd>
+            <span>{{vm.workRecord.targetPicId}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.sourcePicId">Source Pic Id</span></dt>
+        <dd>
+            <span>{{vm.workRecord.sourcePicId}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.similarity">Similarity</span></dt>
+        <dd>
+            <span>{{vm.workRecord.similarity}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.attention">Attention</span></dt>
+        <dd>
+            <span>{{vm.workRecord.attention}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.report">Report</span></dt>
+        <dd>
+            <span>{{vm.workRecord.report}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.reportDelay">Report Delay</span></dt>
+        <dd>
+            <span>{{vm.workRecord.reportDelay}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.latitude">Latitude</span></dt>
+        <dd>
+            <span>{{vm.workRecord.latitude}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.longitude">Longitude</span></dt>
+        <dd>
+            <span>{{vm.workRecord.longitude}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.danger1">Danger 1</span></dt>
+        <dd>
+            <span>{{vm.workRecord.danger1}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.danger2">Danger 2</span></dt>
+        <dd>
+            <span>{{vm.workRecord.danger2}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.danger3">Danger 3</span></dt>
+        <dd>
+            <span>{{vm.workRecord.danger3}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.danger4">Danger 4</span></dt>
+        <dd>
+            <span>{{vm.workRecord.danger4}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.danger5">Danger 5</span></dt>
+        <dd>
+            <span>{{vm.workRecord.danger5}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.deleted">Deleted</span></dt>
+        <dd>
+            <span>{{vm.workRecord.deleted}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.lastRecognizedDate">Last Recognized Date</span></dt>
+        <dd>
+            <span>{{vm.workRecord.lastRecognizedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{vm.workRecord.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{vm.workRecord.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.createdBy">Created By</span></dt>
+        <dd>
+            {{vm.workRecord.createdByLogin}}
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.workRecord.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            {{vm.workRecord.lastModifiedByLogin}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="work-record-glxss-detail.edit({id:vm.workRecord.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

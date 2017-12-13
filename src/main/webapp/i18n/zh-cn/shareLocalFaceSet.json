@@ -1,0 +1,25 @@
+{
+    "glxssSecurityApp": {
+        "shareLocalFaceSet" : {
+            "home": {
+                "title": "推送给我的离线人像库"
+            },
+            "viewFaces": "人像列表",
+            "detail": {
+                "title": "离线人像库"
+            },
+            "label": {
+                "activated": "已激活",
+                "deactivated": "未激活"
+            },
+            "name": "库名",
+            "activated": "是否激活",
+            "createdDate": "创建时间",
+            "lastModifiedDate": "推送时间",
+            "createdBy": "创建者",
+            "shareUser": "推送用户",
+            "lastModifiedBy": "最近一次修改人",
+            "localFaces": "人像数"
+        }
+    }
+}

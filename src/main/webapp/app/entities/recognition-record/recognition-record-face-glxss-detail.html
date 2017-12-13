@@ -1,0 +1,74 @@
+
+<div>
+    <h2><span data-translate="glxssSecurityApp.recognitionRecordFace.detail.title">Recognition Record</span> {{vm.recognitionRecord.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="glxssSecurityApp.recognitionRecord.sourcePicId">Source Pic Id</span></dt>
+        <dd>
+            <storage-img picid="vm.recognitionRecord.sourcePicId" class="pic_lg"/>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.recognitionRecord.similarity">Similarity</span></dt>
+        <dd>
+            <similarity score="{{vm.recognitionRecord.similarity}}"/>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.recognitionRecord.th-attention">Attention</span></dt>
+        <dd>
+            <div ng-if="vm.recognitionRecord.attention">
+                <span class="label danger label-danger" data-translate="glxssSecurityApp.recognitionRecord.label.attention">警示</span>
+            </div>
+            <div ng-if="vm.recognitionRecord.workRecord.danger1">
+                <person-danger danger="{{vm.recognitionRecord.workRecord.danger1}}"/>
+            </div>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.recognitionRecord.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{vm.recognitionRecord.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="glxssSecurityApp.recognitionRecord.createdBy">Created By</span></dt>
+        <dd>
+            {{vm.recognitionRecord.createdBy.login}}
+            <br/>
+            {{vm.recognitionRecord.createdBy.lastName}}{{vm.recognitionRecord.createdBy.firstName}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+
+    <div ng-if="vm.info" class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th><span data-translate="glxssSecurityApp.recognitionRecord.targetPicId">Target Pic Id</span></th>
+                <th><span data-translate="glxssSecurityApp.recognitionRecord.similarity">Similarity</span></th>
+                <th><span data-translate="glxssSecurityApp.recognitionRecordFace.person">Created Date</span></span></th>
+                <th><span data-translate="glxssSecurityApp.recognitionRecord.th-attention">Attention</span></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in vm.info">
+                    <td><person-img picid="{{item.imageId}}" person="item.person" nostatus="true" class="pic-sm" workRecordId="vm.recognitionRecord.workRecord.id"/></td>
+                    <td><similarity score="{{item.similarity}}"/></td>
+                    <td>
+                        <person-info person="item.person" workRecordId="vm.recognitionRecord.workRecord.id"></person-info>
+                    </td>
+                    <td>
+                        <div ng-if="item.person">
+                            <div ng-if="item.person.attention">
+                                <span class="label danger label-warning" data-translate="glxssSecurityApp.recognitionRecord.label.attention">警示</span>
+                            </div>
+                            <div ng-if="item.person.danger">
+                                <person-danger danger="{{item.person.danger}}"/>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

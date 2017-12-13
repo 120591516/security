@@ -1,0 +1,33 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myWorkRecordLabel"
+            data-translate="glxssSecurityApp.workRecord.home.createOrEditLabel">Create or edit a Work Record</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="control-label" data-translate="glxssSecurityApp.workRecord.report"
+                   for="field_report">Report</label>
+            <input type="checkbox" name="report" id="field_report"
+                   ng-model="vm.workRecord.report" ng-true-value='true' ng-false-value="false"/>
+        </div>
+        <div class="form-group">
+            <label data-translate="glxssSecurityApp.workRecord.attentionType">attention</label>
+            <select class="form-control" name="danger1" ng-model="vm.personWarning"
+                    ng-options="warning for warning in vm.personWarnings">
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+            data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
